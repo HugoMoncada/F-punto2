@@ -29,8 +29,7 @@ async function callAPI(e){
 
     errorMessage.textContent = ""; 
     errorMessage.setAttribute("hidden", true);
-    
-    
+        
     if(validateField(name)){
         errorMessage.textContent = "No puede contener caracteres especiales, números o espacios."
         errorMessage.removeAttribute("hidden");
@@ -40,12 +39,13 @@ async function callAPI(e){
     let loading = document.querySelector(".loading"); 
     loading.removeAttribute("hidden");
 
-    // Add the last added name to the array
+    // Add the last created name to the array once it was validated
     names.push({
         name: name.trim(),
         country
     });
   
+    // Split data between people that have a country and people who don't. 
     for(let person of names){
         if(person.name && person.country != ""){
             namesAndCountries.push(person); 
@@ -54,6 +54,7 @@ async function callAPI(e){
         onlyNames.push(person); 
     }
 
+    // Only call the method if it has data inside the array
     if(onlyNames.length > 0){
         namesResponse= await callApiWithNames(onlyNames);
     }
@@ -95,18 +96,19 @@ function addAnotherName(){
         errorMessage.removeAttribute("hidden");
         return;
     }
-    
+
+    // Add the last created name to the array once it was validated
     names.push({
         name: nameInput.value.trim(),
         country: select.value 
     }); 
 
+    // let the user know the input was valid
     success.textContent = "Nombre agregado con exito"
     success.removeAttribute("hidden");
-
     setTimeout(() => {
         success.setAttribute("hidden", true);
-    },1000)
+    },1500)
 
     nameInput.value = ""; 
     select.selectedIndex = 0;
@@ -120,7 +122,8 @@ async function callApiWithNames(names){
         let response = await (await fetch(url, { method: "GET"})).json();
         return response;
     }   
-    
+
+    // In case of many people use the "Batch Usage" end point
     for (const {name} of names) {
         url += `name[]=${name}&`;
     }
@@ -129,6 +132,12 @@ async function callApiWithNames(names){
     return response;
 }
 
+/*
+    Calls the "Localization" end point of the API for each user. 
+    Decided to take this aproach to have a better user experience
+    otherwise all the users will have the last country selected
+    which makes no sense.
+*/
 async function callApiWithNamesAndCountry(names){
     
     let responseNames = []; 
@@ -167,6 +176,7 @@ function renderResponse(response){
     }
 }
 
+// Create elements to render with data in them
 function createListElement(element, ul){
     let nameList = ul;
     let li = document.createElement("li"); 
@@ -188,7 +198,7 @@ function createListElement(element, ul){
 
     nameSpanValue.textContent = `${element.name}`;
    
-    // Sometimes with some countries and names the age value comes null
+    // Sometimes with some countries and names the age value is null
     ageSpanValue.textContent = element.age === null ? "Desconocida" : element.age ;
 
     nameDiv.append(nameSpan);

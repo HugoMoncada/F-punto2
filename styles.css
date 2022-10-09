@@ -92,7 +92,7 @@ header{
     flex-direction: column;
     row-gap: 20px;
     grid-area: form;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 form{
@@ -153,7 +153,6 @@ button{
     grid-area: names;
 }
 
-
 .names__item{
     display: flex;
     flex-direction: column;
@@ -193,7 +192,7 @@ button{
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "explanation names"
                              "form names";
-        column-gap: 40px;
+        column-gap: 45px;
     }
 
 }
@@ -203,7 +202,8 @@ button{
     .names__list{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        row-gap: 15px;
+        column-gap: 30px;
     }
 
 }
