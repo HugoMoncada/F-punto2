@@ -6,9 +6,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Punto 2</title>
         <link rel="stylesheet" href="/styles.css">
-        <script src="app.js" defer></script>
+        <script src="app.js" defer type="module"></script>
     </head>
 <body>
+
     
+    <form action="POST">
+        <div class="form__input">
+            <label for="name" class="highlight">Nombre*</label>
+            <input type="text" required maxlength="40" autofocus name="name" id="name" placeholder="Karen">
+            <div class="error" hidden></div>
+            <div class="success" hidden></div>
+        </div>
+        
+        <select name="select">
+            <option value="">Selecciona un país</option>
+            <!-- filled with js -->
+        </select>
+        
+        <div id="addAnotherName">Agregar Nuevo Nombre</div>
+        <button type="submit" id="submit">Adivinar Edad</button>
+    </form>
+
 </body>
 </html>
