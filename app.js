@@ -13,6 +13,7 @@ COUNTRIES.forEach( country => {
     select.add(option);  
 });
 
+
 async function callAPI(e){
     e.preventDefault();
     
@@ -157,7 +158,70 @@ async function callApiWithNamesAndCountry(names){
     return responseNames;
 }
 
+function renderResponse(response){  
+    let ul = document.createElement("ul"); 
+    ul.classList.add("names__list");
+    document.querySelector(".names").appendChild(ul);
+    for(const element of response){
+        createListElement(element, ul);
+    }
+}
 
+function createListElement(element, ul){
+    let nameList = ul;
+    let li = document.createElement("li"); 
+    let nameDiv = document.createElement("div");
+    let ageDiv = document.createElement("div");
+
+    let nameSpan = document.createElement("span");
+    let ageSpan = document.createElement("span"); 
+
+    let nameSpanValue = document.createElement("span");
+    let ageSpanValue = document.createElement("span");
+
+    li.classList.add("names__item");
+    nameSpan.classList.add("highlight");
+    ageSpan.classList.add("highlight");
+
+    nameSpan.textContent = `Nombre: `;
+    ageSpan.textContent = `Edad: `;
+
+    nameSpanValue.textContent = `${element.name}`;
+   
+    // Sometimes with some countries and names the age value comes null
+    ageSpanValue.textContent = element.age === null ? "Desconocida" : element.age ;
+
+    nameDiv.append(nameSpan);
+    nameDiv.append(nameSpanValue);
+
+    ageDiv.append(ageSpan);
+    ageDiv.append(ageSpanValue);
+
+    if(element.country_id){
+        let countryDiv = document.createElement("div");
+        let countrySpanValue = document.createElement("span");
+        let countrySpan = document.createElement("span"); 
+        countrySpan.textContent = "País: "; 
+        countrySpan.classList.add("highlight");
+        countrySpanValue.textContent = `${element.country_id}`;
+        countryDiv.append(countrySpan);
+        countryDiv.append(countrySpanValue);
+        li.appendChild(countryDiv);
+    }
+    
+    li.appendChild(nameDiv);
+    li.appendChild(ageDiv);
+
+    nameList.appendChild(li); 
+}
+
+function cleanList(){
+    let menu = document.querySelector(".names__list"); 
+    if(menu == null){
+        return; 
+    }
+    menu.remove(); 
+}
 
 function validateField(name){
     let regex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~0123456789]/;
