@@ -14,3 +14,4 @@ Ahora cada persona es una busqueda diferente y se renderiza con el pais con el q
 - Una vez realizada la logica empece a agregarle estilos, como se ve no es algo complicado, pero cumple la funcion de mostrar los resultados de forma ordenada.
 
 
+Live Site URL: [Se puede ver live aqui!](https://punto2.vercel.app/)
