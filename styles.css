@@ -164,7 +164,7 @@ button{
     display: flex;
     flex-direction: column;
     font-size: 1.2rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid gray;
     padding: 10px;
     width: 100%;
 }
@@ -179,12 +179,6 @@ button{
     color: var(--Purple);
 }
 
-
-hr{
-
-   
-}
-
 .error{
     color: red;
     font-size: .8rem;
@@ -197,23 +191,36 @@ hr{
     margin-top: 3px;
 }
 
-/* .names__item{
-    display: flex;
-    flex-direction: column;
-    font-size: 1.2rem;
-    border-bottom: 1px solid black;
-    padding: 10px;
+
+
+@media screen and (min-width:1200px){
+
+    .container{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "explanation names"
+                             "form names";
+        column-gap: 40px;
+    }
+
 }
 
-.names__list{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 20px;
-    column-gap: 40px;
-} */
+
+@media screen and (min-width:1600px){
+
+    .names__list{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+}
 
 
-@media screen and (min-width:1000px){
 
+@media screen and (min-width:1800px){
+
+    .container{
+        width: 75%;
+    }
 
 }

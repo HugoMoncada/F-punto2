@@ -32,9 +32,8 @@ async function callAPI(e){
     
     // Add last name to the array
     if(validateField(name)){
-        errorMessage.textContent = "No puede contener caracteres especiales"
+        errorMessage.textContent = "No puede contener caracteres especiales, números o espacios."
         errorMessage.removeAttribute("hidden");
-        name = ""; 
         return;
     }
 
@@ -90,9 +89,8 @@ function addAnotherName(){
     }; 
     
     if(validateField(nameInput.value)){
-        errorMessage.textContent = "No puede contener caracteres especiales ó números"
+        errorMessage.textContent = "No puede contener caracteres especiales, números o espacios."
         errorMessage.removeAttribute("hidden");
-        nameInput.value = ""; 
         return;
     }
     
