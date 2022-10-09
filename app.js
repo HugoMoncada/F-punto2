@@ -30,7 +30,7 @@ async function callAPI(e){
     errorMessage.textContent = ""; 
     errorMessage.setAttribute("hidden", true);
     
-    // Add last name to the array
+    
     if(validateField(name)){
         errorMessage.textContent = "No puede contener caracteres especiales, números o espacios."
         errorMessage.removeAttribute("hidden");
@@ -40,6 +40,7 @@ async function callAPI(e){
     let loading = document.querySelector(".loading"); 
     loading.removeAttribute("hidden");
 
+    // Add the last added name to the array
     names.push({
         name: name.trim(),
         country
@@ -69,6 +70,7 @@ async function callAPI(e){
 
     renderResponse(names);
     names = []; 
+    e.target[0].value = ""; 
 }
 
 function addAnotherName(){

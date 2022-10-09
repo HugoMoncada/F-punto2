@@ -13,7 +13,6 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* remove blue highlighting  */
 ::selection {
     color: none;
     background: rgba(0, 0, 255, 0.1);
@@ -40,9 +39,18 @@ svg{
 
 header{
     position: absolute;
-    top: 5px;
+    top: 16px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: var(--Purple);
+    text-shadow: 1px 0px 1px #000000;
+    border-bottom: 1px solid gray;
 }
 
 .container{
@@ -53,11 +61,12 @@ header{
                          "names";
     z-index: 300;
     position: relative;
-    margin: 190px auto;
+    margin: 145px auto;
 }
 
 .explanation{
     grid-area: explanation;
+    margin-bottom: 20px;
 }
 
 .explanation__title{
@@ -103,16 +112,10 @@ select{
     padding: 10px;
 }
 
-.background{
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
 label{
     font-size: 1.4rem;
     color: var(--Purple);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     font-weight: 600;
 }
 
@@ -150,15 +153,6 @@ button{
     grid-area: names;
 }
 
-.title{
-    text-align: center;
-    font-size: 1.7rem;
-    margin-bottom: 20px;
-    font-size: 2rem;
-    background: -webkit-linear-gradient(#753BBD, #00D7FF);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 
 .names__item{
     display: flex;
@@ -177,6 +171,7 @@ button{
 
 .highlight{
     color: var(--Purple);
+    font-weight: 600;
 }
 
 .error{
@@ -191,8 +186,7 @@ button{
     margin-top: 3px;
 }
 
-
-
+/* Breakpoints */
 @media screen and (min-width:1200px){
 
     .container{
@@ -204,7 +198,6 @@ button{
 
 }
 
-
 @media screen and (min-width:1600px){
 
     .names__list{
@@ -215,12 +208,11 @@ button{
 
 }
 
-
-
 @media screen and (min-width:1800px){
 
     .container{
         width: 75%;
+        margin: 175px auto;
     }
 
 }
